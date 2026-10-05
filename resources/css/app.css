@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +7,8 @@
 }
 
 body {
-    
-    font-family: Arial, sans-serif;
+
+    font-family: 'Roboto', sans-serif;
     background-color: #f7fbfc;
     color: #0b2545;
 }
@@ -23,10 +25,22 @@ header {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     color: #0b2545;
     text-decoration: none;
+}
+
+.logo img {
+    width: 70px;
+    height: 40px;
+}
+
+.logo span {
+    font-family: 'Mansalva', cursive;
     font-size: 24px;
-    font-weight: 700;
 }
 
 nav {
@@ -46,4 +60,26 @@ nav a:hover {
 
 main {
     padding: 60px;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Noto Serif', serif;
 }

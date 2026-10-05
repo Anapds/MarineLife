@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <title>MarineLife</title>
 </head>
@@ -14,7 +15,7 @@
 
     <header>
         <a href="/" class="logo">
-            MarineLife
+            <span>MarineLife</span>
         </a>
         <nav>
             <a href="/animais">Animais</a>
