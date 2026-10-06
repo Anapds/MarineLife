@@ -28,7 +28,6 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-
     color: #0b2545;
     text-decoration: none;
 }
@@ -52,6 +51,8 @@ nav a {
     text-decoration: none;
     color: #134b70;
     font-weight: 500;
+        font-family: 'Mansalva', cursive;
+
 }
 
 nav a:hover {
@@ -82,4 +83,9 @@ h1,
 h2,
 h3 {
     font-family: 'Noto Serif', serif;
+}
+
+.hero img {
+    width: 180px;
+    margin-bottom: 20px;
 }

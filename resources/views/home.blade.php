@@ -3,6 +3,8 @@
 @section('content')
 
     <section class="hero">
+            <img src="/images/logo/favicon.png" alt="logo">
+
 
         <h2>Explore a vida marinha</h2>
 
