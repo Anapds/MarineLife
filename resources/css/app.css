@@ -155,3 +155,464 @@ h3 {
 }
 
 
+
+
+/* ========================================
+   MARINELIFE — PÁGINA DE OCEANOS
+======================================== */
+
+/* CABEÇALHO */
+
+.oceanos-hero {
+    padding: 85px 24px 75px;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at top,
+            rgba(177, 210, 224, 0.28),
+            transparent 65%
+        ),
+        #f3f8fa;
+}
+
+.oceanos-eyebrow {
+    display: block;
+    margin-bottom: 22px;
+    color: #668fa1;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.oceanos-hero h1 {
+    margin: 0 0 18px;
+    color: #193d50;
+    font-size: clamp(2.3rem, 5vw, 3.7rem);
+    font-weight: 600;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+}
+
+.oceanos-hero > p {
+    max-width: 580px;
+    margin: 0 auto;
+    color: #687e89;
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+/* CONTEÚDO */
+
+.oceanos-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 75px 28px 55px;
+}
+
+/* INTRODUÇÃO */
+
+.oceanos-intro {
+    max-width: 610px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.oceanos-intro > span {
+    color: #7299a9;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.oceanos-intro h2 {
+    margin: 13px 0;
+    color: #193d50;
+    font-size: clamp(1.7rem, 3vw, 2.35rem);
+    font-weight: 600;
+    letter-spacing: -0.7px;
+}
+
+.oceanos-intro p {
+    margin: 0;
+    color: #71838c;
+    font-size: 0.95rem;
+    line-height: 1.85;
+}
+
+/* LISTA DE OCEANOS */
+
+.oceanos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* CARDS */
+
+.oceano-item {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr) 32px;
+    align-items: center;
+    gap: 22px;
+    margin: 0;
+    padding: 28px 30px;
+    background: #fff;
+    border: 1px solid #e3ebef;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(30, 66, 83, 0.025);
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.oceano-item:hover {
+    border-color: #c2d8e1;
+    box-shadow: 0 10px 28px rgba(30, 66, 83, 0.07);
+    transform: translateY(-2px);
+}
+
+/* NUMERAÇÃO */
+
+.oceano-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    background: #edf5f8;
+    color: #507f94;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* INFORMAÇÕES */
+
+.oceano-info h3 {
+    margin: 0 0 10px;
+    color: #203f50;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.oceano-info p {
+    max-width: 620px;
+    margin: 0;
+    color: #6d7f88;
+    font-size: 0.92rem;
+    line-height: 1.85;
+}
+
+/* ETIQUETAS */
+
+.oceano-detalhe {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 6px 10px;
+    border: 1px solid #e0edf1;
+    border-radius: 5px;
+    background: #f5f9fa;
+    color: #618697;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* SETAS DECORATIVAS */
+
+.oceano-seta {
+    color: #83a7b6;
+    font-size: 1.3rem;
+    text-align: center;
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.oceano-item:hover .oceano-seta {
+    color: #315f74;
+    transform: translate(2px, -2px);
+}
+
+/* RODAPÉ DA SEÇÃO */
+
+.oceanos-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 60px;
+}
+
+.oceanos-footer p {
+    margin: 0;
+    color: #92a6af;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.oceanos-footer-linha {
+    width: 38px;
+    height: 1px;
+    background: #dce7eb;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+    .oceanos-hero {
+        padding: 65px 22px 55px;
+    }
+
+    .oceanos-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 2px;
+    }
+
+    .oceanos-hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .oceanos-container {
+        padding: 55px 18px 40px;
+    }
+
+    .oceanos-intro {
+        margin-bottom: 30px;
+    }
+
+    .oceanos-lista {
+        gap: 13px;
+    }
+
+    .oceano-item {
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 15px;
+        padding: 20px 16px;
+    }
+
+    .oceano-numero {
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+        font-size: 1rem;
+        align-self: start;
+    }
+
+    .oceano-info h3 {
+        font-size: 1.15rem;
+    }
+
+    .oceano-info p {
+        font-size: 0.88rem;
+    }
+
+    .oceano-seta {
+        display: none;
+    }
+
+    .oceanos-footer {
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    .oceanos-footer p {
+        font-size: 0.55rem;
+        letter-spacing: 1.3px;
+    }
+
+    .oceanos-footer-linha {
+        width: 20px;
+    }
+}
+
+/* ACESSIBILIDADE: REDUÇÃO DE MOVIMENTO */
+
+@media (prefers-reduced-motion: reduce) {
+    .oceano-item,
+    .oceano-seta {
+        transition: none;
+    }
+
+    .oceano-item:hover {
+        transform: none;
+    }
+}
+
+
+/* ========================================
+   MARINELIFE — CATÁLOGO DE ESPÉCIES
+======================================== */
+
+.especies-hero h1 {
+    max-width: 760px;
+    margin-inline: auto;
+}
+
+.especies-hero p {
+    max-width: 620px;
+    margin-inline: auto;
+}
+
+.especies-busca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 720px;
+    margin: 0 auto 65px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #dce7ec;
+    border-radius: 14px;
+    box-shadow: 0 8px 28px rgba(20, 61, 89, 0.06);
+}
+
+.especies-busca input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px 16px;
+    color: #173d53;
+    background: transparent;
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+.especies-busca input:focus-visible {
+    outline: 2px solid #6caac5;
+    outline-offset: -2px;
+    border-radius: 8px;
+}
+
+.especies-busca button {
+    padding: 14px 22px;
+    color: #fff;
+    background: #174d6b;
+    border: none;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.especies-busca button:hover {
+    background: #226b8e;
+}
+
+.especies-mensagem {
+    max-width: 720px;
+    margin: 0 auto 55px;
+    padding: 30px;
+    text-align: center;
+    background: #f5f9fb;
+    border-radius: 14px;
+}
+
+.especies-mensagem h2 {
+    margin-top: 0;
+    color: #173d53;
+}
+
+.especies-mensagem p,
+.especies-total {
+    color: #627987;
+    line-height: 1.7;
+}
+
+.especies-total {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.especies-sugestoes {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.especies-sugestoes-lista {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.especie-sugestao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+    padding: 20px;
+    color: #173d53;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #e0e9ee;
+    border-radius: 14px;
+    transition: border-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.especie-sugestao:hover {
+    border-color: #8dbbd0;
+    transform: translateY(-2px);
+}
+
+.especie-sugestao-icone {
+    display: grid;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    background: #eef6f9;
+    border-radius: 12px;
+    font-size: 1.6rem;
+}
+
+.especie-sugestao > span:nth-child(2) {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.especie-sugestao small {
+    color: #718591;
+    line-height: 1.5;
+}
+
+.especie-sugestao > span:last-child {
+    color: #5085a0;
+}
+
+@media (max-width: 600px) {
+    .especies-busca {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 45px;
+    }
+
+    .especies-busca input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .especies-busca button {
+        width: 100%;
+    }
+
+    .especies-sugestoes-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .especie-sugestao {
+        padding: 16px;
+    }
+}
+
+

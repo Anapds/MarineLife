@@ -13,6 +13,7 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/animais', [AnimalController::class, 'index']);
-Route::get('/especies', [EspecieController::class, 'index']); 
+Route::get('/especies', [EspecieController::class, 'index'])->name('especies.index');
 Route::get('/oceanos', [OceanosController::class, 'index']);
 Route::get('/habitats', [HabitatsController::class,'index']);
+
