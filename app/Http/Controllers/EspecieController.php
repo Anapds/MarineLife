@@ -10,71 +10,65 @@ class EspecieController extends Controller
 {
     private string $apiUrl = 'https://www.marinespecies.org/rest';
 
+
     public function index(Request $request)
     {
         $request->validate([
             'q' => ['nullable', 'string', 'max:100'],
+            'page' => ['nullable', 'integer', 'min:1', 'max:1000'],
         ]);
 
         $busca = trim($request->input('q', ''));
+        $pagina = max(1, (int) $request->input('page', 1));
+        $porPagina = 12;
+
         $especies = collect();
         $erroApi = false;
+        $temProximaPagina = false;
 
         if ($busca !== '') {
-            // A versão v2 evita reutilizar o cache antigo.
-            $cacheKey = 'marinelife_especies_v2_' . md5(
-                mb_strtolower($busca)
-            );
+            $offset = (($pagina - 1) * $porPagina) + 1;
 
             try {
-                $dados = Cache::remember(
-                    $cacheKey,
-                    now()->addMinutes(30),
-                    function () use ($busca) {
-                        $resultados = collect();
+                $consultas = [
+                    'AphiaRecordsByName' => [
+                        'marine_only' => 'true',
+                        'like' => 'true',
+                    ],
+                    'AphiaRecordsByVernacular' => [
+                        'like' => 'true',
+                    ],
+                ];
 
-                        $consultas = [
-                            'AphiaRecordsByName' => [
-                                'marine_only' => 'true',
-                                'like' => 'true',
-                            ],
-                            'AphiaRecordsByVernacular' => [
-                                'like' => 'true',
-                            ],
-                        ];
+                $resultados = collect();
 
-                        foreach ($consultas as $endpoint => $parametros) {
-                            $resposta = Http::timeout(15)->get(
-                                $this->apiUrl . '/' . $endpoint . '/'
-                                    . rawurlencode($busca),
-                                $parametros
-                            )->throw();
+                foreach ($consultas as $endpoint => $parametros) {
+                    $resposta = Http::timeout(15)->get(
+                        $this->apiUrl . '/' . $endpoint . '/'
+                        . rawurlencode($busca),
+                        array_merge($parametros, [
+                            'offset' => $offset,
+                        ])
+                    )->throw();
 
-                            $dadosApi = $resposta->json();
+                    $dadosApi = $resposta->json();
 
-                            if (is_array($dadosApi)) {
-                                $resultados = $resultados->merge(
-                                    $dadosApi
-                                );
-                            }
-                        }
-
-                        // Guarda arrays simples no cache, não a Collection.
-                        return $resultados
-                            ->filter(fn ($item) => is_array($item))
-                            ->unique('AphiaID')
-                            ->take(50)
-                            ->values()
-                            ->all();
+                    if (is_array($dadosApi)) {
+                        $resultados = $resultados->merge($dadosApi);
                     }
-                );
+                }
 
-                // Converte os dados recuperados em Collection.
-                $especies = collect($dados);
-                
+                $resultados = $resultados
+                    ->filter(fn($item) => is_array($item))
+                    ->unique('AphiaID')
+                    ->values();
+
+                // Busca um resultado extra para verificar se há próxima página.
+                $especies = $resultados->take($porPagina);
+                $temProximaPagina = $resultados->count() > $porPagina;
+
             } catch (\Throwable $e) {
                 report($e);
-
                 $erroApi = true;
                 $especies = collect();
             }
@@ -84,6 +78,9 @@ class EspecieController extends Controller
             'especies' => $especies,
             'busca' => $busca,
             'erroApi' => $erroApi,
+            'pagina' => $pagina,
+            'temProximaPagina' => $temProximaPagina,
         ]);
     }
+
 }
