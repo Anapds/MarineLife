@@ -13,17 +13,27 @@
 
 <body>
 
-    <header>
+
+    <header class="site-header">
         <a href="/" class="logo">
             <span>MarineLife</span>
         </a>
-        <nav>
+
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false"
+            aria-controls="site-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav">
             <a href="/animais">Animais</a>
             <a href="/especies">Espécies</a>
             <a href="/oceanos">Oceanos</a>
             <a href="/habitats">Habitats</a>
         </nav>
     </header>
+
 
     <main>
         @yield('content')
