@@ -644,6 +644,7 @@ h3 {
 
 /* ANIMAIS */
 
+
 .animais-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -651,11 +652,10 @@ h3 {
     margin-top: 36px;
 }
 
-
 .animal-card {
     padding: 0;
     overflow: hidden;
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #e0ecef;
     border-radius: 16px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -689,7 +689,6 @@ h3 {
 .animal-card-conteudo {
     padding: 22px;
 }
-
 
 .animal-nome-cientifico {
     margin: 0;
@@ -733,14 +732,80 @@ h3 {
     background: #e0f0f3;
 }
 
+/* Resposta da pesquisa */
+.animal-resposta {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 32px;
+    background: #fff;
+    border: 1px solid #dce8e8;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgb(10 50 60 / 7%);
+}
+
+.animal-resposta-imagem {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    margin: 20px 0 28px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.animal-resposta h2 {
+    margin: 12px 0 20px;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.animal-resposta-texto {
+    color: #344b53;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+.animal-resposta-texto h1,
+.animal-resposta-texto h2,
+.animal-resposta-texto h3,
+.animal-resposta-texto h4 {
+    margin: 28px 0 10px;
+    color: #123f50;
+    line-height: 1.3;
+}
+
+.animal-resposta-texto p {
+    margin: 0 0 18px;
+}
+
+.animal-resposta-texto ul,
+.animal-resposta-texto ol {
+    margin-bottom: 20px;
+    padding-left: 24px;
+}
+
+.animal-resposta-nota {
+    margin-top: 28px;
+    padding-top: 16px;
+    color: #71838a;
+    font-size: 0.85rem;
+    border-top: 1px solid #dce8e8;
+}
+
+/* Tablets */
 @media (max-width: 900px) {
     .animais-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 560px) {
+/* Telemóveis */
+@media (max-width: 600px) {
     .animais-grid {
         grid-template-columns: 1fr;
+    }
+
+    .animal-resposta {
+        margin: 24px auto;
+        padding: 20px;
     }
 }

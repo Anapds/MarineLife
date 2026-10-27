@@ -63,7 +63,6 @@ class EspecieController extends Controller
                     ->unique('AphiaID')
                     ->values();
 
-                // Busca um resultado extra para verificar se há próxima página.
                 $especies = $resultados->take($porPagina);
                 $temProximaPagina = $resultados->count() > $porPagina;
 

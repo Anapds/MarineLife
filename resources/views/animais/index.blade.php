@@ -7,93 +7,88 @@
         <h1>Conheça os animais marinhos</h1>
 
         <p>
-            Explore as espécies que habitam nossos oceanos
-            e descubra a diversidade da vida marinha.
+            Descubra espécies, habitats, alimentação e curiosidades
+            fascinantes sobre os animais que habitam os oceanos.
         </p>
     </section>
 
     <section class="oceanos-container">
         <form action="{{ url('/animais') }}" method="GET" class="especies-busca">
-            <input type="search" name="q" value="{{ $busca }}" placeholder="Buscar por nome popular ou científico..."
-                aria-label="Buscar animais marinhos">
+            <input type="search" name="q" value="{{ $busca }}" placeholder="Pesquisar um animal marinho..."
+                aria-label="Pesquisar animais marinhos" maxlength="100">
 
             <button type="submit">Pesquisar</button>
         </form>
 
         @if ($erroApi)
+            <p class="especies-mensagem" role="alert">
+                Não foi possível obter uma resposta neste momento.
+                Tente novamente dentro de alguns instantes.
+            </p>
+
+        @elseif ($busca !== '' && $resposta)
+            @if ($imagemAnimal)
+                <img class="animal-resposta-imagem" src="{{ $imagemAnimal }}" alt="Fotografia de {{ $busca }}" loading="lazy">
+            @endif
+            <article class="animal-resposta">
+                <span class="animal-card-categoria">
+                    MARINELIFE · RESULTADO DA PESQUISA
+                </span>
+
+                <h2>{{ $busca }}</h2>
+
+                <div class="animal-resposta-texto">
+                    {!! \Illuminate\Support\Str::markdown($resposta, [
+                'html_input' => 'strip',
+                'allow_unsafe_links' => false,
+            ]) !!}
+                </div>
+
+                <p class="animal-resposta-nota">
+                    As informações são geradas por inteligência artificial
+                    e podem conter imprecisões.
+                </p>
+            </article>
+
+        @elseif ($busca !== '')
             <p class="especies-mensagem">
-                Não foi possível consultar os animais.
+                Não foi possível encontrar uma resposta para esta pesquisa.
                 Tente novamente.
             </p>
-
-        @elseif ($busca !== '' && $animais->isEmpty())
-            <p class="especies-mensagem">
-                Nenhum resultado encontrado para "{{ $busca }}".
-            </p>
-
-        @elseif ($animais->isNotEmpty())
-            <div class="animais-grid">
-                @foreach ($animais as $animal)
-
-                    <article class="animal-card">
-                        @php
-                            $foto = data_get($animal, 'default_photo.medium_url')
-                                ?? data_get($animal, 'default_photo.url');
-                        @endphp
-
-                        @if ($foto)
-                            <img class="animal-card-imagem" src="{{ $foto }}"
-                                alt="{{ $animal['preferred_common_name'] ?? $animal['name'] ?? 'Animal marinho' }}" loading="lazy">
-                        @else
-                            <div class="animal-card-sem-imagem">
-                                <span>Imagem indisponível</span>
-                            </div>
-                        @endif
-
-                        <div class="animal-card-conteudo">
-                            <span class="animal-card-categoria">
-                                {{ $animal['rank'] ?? 'Organismo marinho' }}
-                            </span>
-
-                            <h2>
-                                {{ $animal['preferred_common_name'] ?? $animal['name'] ?? 'Nome indisponível' }}
-                            </h2>
-
-                            @if (!empty($animal['preferred_common_name']) && !empty($animal['name']))
-                                <p class="animal-nome-cientifico">
-                                    {{ $animal['name'] }}
-                                </p>
-                            @endif
-                        </div>
-                    </article>
-
-                @endforeach
-            </div>
 
         @else
             <div class="animais-introducao">
                 <h2>Explore a biodiversidade marinha</h2>
 
                 <p>
-                    Pesquise um animal para descobrir seu nome
-                    científico e outras informações disponíveis.
+                    Escreva o nome de um animal marinho para conhecer
+                    as suas características, o habitat, a alimentação
+                    e algumas curiosidades.
                 </p>
 
                 <div class="animais-sugestoes">
                     <a href="{{ url('/animais?q=tartaruga-marinha') }}">
-                        Tartarugas
+                        Tartarugas marinhas
                     </a>
 
-                    <a href="{{ url('/animais?q=dolphin') }}">
+                    <a href="{{ url('/animais?q=golfinho') }}">
                         Golfinhos
                     </a>
 
-                    <a href="{{ url('/animais?q=shark') }}">
+                    <a href="{{ url('/animais?q=tubarão-branco') }}">
                         Tubarões
                     </a>
 
-                    <a href="{{ url('/animais?q=octopus') }}">
+                    <a href="{{ url('/animais?q=polvo') }}">
                         Polvos
+                    </a>
+
+                    <a href="{{ url('/animais?q=estrela-do-mar') }}">
+                        Estrelas-do-mar
+                    </a>
+
+                    <a href="{{ url('/animais?q=cavalo-marinho') }}">
+                        Cavalos-marinhos
                     </a>
                 </div>
             </div>
