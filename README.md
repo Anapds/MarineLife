@@ -21,6 +21,35 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Deploy
+
+The application requires PHP 8.3 or later and Node.js for building frontend assets. Configure the web server document root to `public/`.
+
+For a production release:
+
+1. Install dependencies and build the frontend:
+
+   ```sh
+   composer install --no-dev --optimize-autoloader
+   npm ci
+   npm run build
+   ```
+
+2. Set `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL`, and a persistent `APP_KEY` in the hosting environment. Configure `DB_CONNECTION` and the matching database credentials. Do not use the example local environment settings as production settings.
+3. Run database migrations after the production database is available:
+
+   ```sh
+   php artisan migrate --force
+   ```
+
+The default database connection is SQLite, and `database/database.sqlite` is intentionally excluded from Git. If using SQLite, create that file before migrating and make sure its storage is writable and persistent across releases:
+
+```sh
+php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+```
+
+For hosted environments with ephemeral filesystems, use a managed database instead. The session, cache, and queue drivers also default to the database.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
